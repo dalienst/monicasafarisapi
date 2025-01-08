@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 
 from bookings.models import Booking
 from tours.models import Tour
+from bookings.utils import send_client_booking_email
 
 User = get_user_model()
 
@@ -13,6 +14,7 @@ class BookingSerializer(serializers.ModelSerializer):
     )
     name = serializers.CharField(max_length=255)
     email = serializers.EmailField()
+    tour_details = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = Booking
@@ -35,4 +37,25 @@ class BookingSerializer(serializers.ModelSerializer):
             "updated_at",
             "slug",
             "reference",
+            "tour_details",
         )
+
+    def create(self, validated_data):
+        booking = Booking.objects.create(**validated_data)
+        booking.save()
+
+        send_client_booking_email(booking)
+
+        return booking
+
+    def get_tour_details(self, obj):
+        tour = obj.tour
+        return {
+            "reference": tour.reference,
+            "title": tour.title,
+            "description": tour.description,
+            "ksh": tour.ksh,
+            "euro": tour.euro,
+            "pound": tour.pound,
+            "dollar": tour.dollar,
+        }
