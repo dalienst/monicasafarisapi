@@ -40,14 +40,6 @@ class BookingSerializer(serializers.ModelSerializer):
             "tour_details",
         )
 
-    def create(self, validated_data):
-        booking = Booking.objects.create(**validated_data)
-        booking.save()
-
-        send_client_booking_email(booking)
-
-        return booking
-
     def get_tour_details(self, obj):
         tour = obj.tour
         return {
