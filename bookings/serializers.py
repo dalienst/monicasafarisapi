@@ -46,8 +46,11 @@ class BookingSerializer(serializers.ModelSerializer):
             "reference": tour.reference,
             "title": tour.title,
             "description": tour.description,
+            "duration": tour.duration,
+            "capacity": tour.capacity,
             "ksh": tour.ksh,
             "euro": tour.euro,
             "pound": tour.pound,
             "dollar": tour.dollar,
+            "user_name": tour.user.name,
         }
