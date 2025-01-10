@@ -17,7 +17,7 @@ class Tour(UniversalIdModel, TimeStampedModel, ReferenceSlugModel):
     pound = models.DecimalField(max_digits=10, decimal_places=2)
     dollar = models.DecimalField(max_digits=10, decimal_places=2)
     duration = models.CharField(max_length=255, blank=True, null=True)
-    capacity = models.PositiveIntegerField(blank=True, null=True)
+    capacity = models.CharField(blank=True, null=True, max_length=255)
     is_featured = models.BooleanField(default=False)
 
     class Meta:
