@@ -57,8 +57,8 @@ def notify_owner_of_booking(booking):
     Sends an email to the tour company owner when a booking is made
     """
     try:
-        tour_url = f"{DOMAIN}/tours/{booking.tour.reference}"
-        booking_url = f"{DOMAIN}/bookings/{booking.slug}"
+        tour_url = f"{DOMAIN}/admin/tours/{booking.tour.slug}"
+        booking_url = f"{DOMAIN}/admin/bookings/{booking.slug}"
         email_body = render_to_string(
             "notify_owner.html",
             {

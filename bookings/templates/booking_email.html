@@ -71,7 +71,7 @@
                 <p>Thank you for booking a tour with us! We are excited to confirm your booking. Below are the details
                     of your booking:</p>
                 <div class="details">
-                    <p><strong>Tour:</strong> <a href="{{ tour_url }}">{{ tour }}</a></p>
+                    <p><strong>Tour:</strong> <a href="{{ tour_url }}" target="_blank">{{ tour }}</a></p>
                     <p><strong>Date:</strong> {{ date }}</p>
                     <p><strong>Guests:</strong> {{ guests }}</p>
                     <p><strong>Special Requests:</strong> {{ special_requests }}</p>
@@ -81,7 +81,7 @@
                     <p><strong>Payment Method:</strong> {{ payment_method }}</p>
                     <p><strong>Request Jeep:</strong> {{ request_jeep|yesno:"Yes,No" }}</p>
                 </div>
-                <p>You can view your booking details here: <a href="{{ booking_url }}">View Booking</a></p>
+                <p>You can view your booking details here: <a href="{{ booking_url }}" target="_blank">View Booking</a></p>
                 <p>If you have any questions, feel free to reach out to us.</p>
                 <p>Thanks,<br>The Monica Tours Team</p>
             </div>
