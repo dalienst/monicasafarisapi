@@ -1,5 +1,6 @@
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.parsers import MultiPartParser, FormParser
 
 from tours.models import Tour
 from tours.serializers import TourSerializer
@@ -22,6 +23,10 @@ class TourDetailView(generics.RetrieveAPIView):
 
 
 class TourListCreateView(generics.ListCreateAPIView):
+    parser_classes = (
+        MultiPartParser,
+        FormParser,
+    )
     serializer_class = TourSerializer
     permission_classes = (IsAuthenticated,)
     queryset = Tour.objects.all()
