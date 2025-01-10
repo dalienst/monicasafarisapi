@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                margin: 0;
+                padding: 0;
+            }
+
+            .container {
+                max-width: 600px;
+                margin: 20px auto;
+                background: #ffffff;
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            .header {
+                background-color: #ff4500;
+                color: white;
+                text-align: center;
+                padding: 20px;
+            }
+
+            .content {
+                padding: 20px;
+                color: #333;
+            }
+
+            .details {
+                background-color: #f9f9f9;
+                padding: 15px;
+                border-radius: 5px;
+                margin: 20px 0;
+            }
+
+            .details p {
+                margin: 8px 0;
+            }
+
+            .footer {
+                text-align: center;
+                background-color: #f4f4f4;
+                color: #777;
+                padding: 10px;
+                font-size: 12px;
+            }
+
+            a {
+                color: #ff4500;
+                text-decoration: none;
+            }
+
+            a:hover {
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1>New Booking Notification</h1>
+            </div>
+            <div class="content">
+                <p>Dear {{ booking.tour.user.first_name }},</p>
+                <p>A new booking has been made for your tour <strong>{{ tour }}</strong>. Below are the details:</p>
+                <div class="details">
+                    <p><strong>Guest Name:</strong> {{ name }}</p>
+                    <p><strong>Email:</strong> {{ email }}</p>
+                    <p><strong>Phone:</strong> {{ phone }}</p>
+                    <p><strong>Tour Date:</strong> {{ date }}</p>
+                    <p><strong>Number of Guests:</strong> {{ guests }}</p>
+                    <p><strong>Special Requests:</strong> {{ special_requests }}</p>
+                    <p><strong>Payment Amount:</strong> {{ currency }} {{ amount }}</p>
+                    <p><strong>Payment Status:</strong> {{ payment_status }}</p>
+                    <p><strong>Request Jeep:</strong> {{ request_jeep|yesno:"Yes,No" }}</p>
+                </div>
+                <p>You can view more details about this booking here: <a href="{{ booking_url }}" target="_blank">View Booking</a></p>
+                <p>If you have any questions, please contact the guest directly using the information above.</p>
+                <p>Thanks,<br>The Monica Tours Team</p>
+            </div>
+            <div class="footer">
+                <p>&copy; {{ current_year }} Monica Tours. All rights reserved.</p>
+            </div>
+        </div>
+    </body>
+
+</html>

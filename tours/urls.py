@@ -8,8 +8,8 @@ from tours.views import (
 )
 
 urlpatterns = [
-    path("", TourListView.as_view(), name="tour-list"),
-    path("<str:reference>/", TourDetailView.as_view(), name="tour-detail"),
-    path("create/", TourListCreateView.as_view(), name="tour-create"),
-    path("detail/<str:slug>/", TourUpdateDeleteView.as_view(), name="tour-update"),
+    path("list/", TourListView.as_view(), name="tour-list"),
+    path("detail/<str:reference>/", TourDetailView.as_view(), name="tour-detail"),
+    path("", TourListCreateView.as_view(), name="tour-list-create"),
+    path("<str:slug>/", TourUpdateDeleteView.as_view(), name="tour-update"),
 ]

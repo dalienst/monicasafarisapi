@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                margin: 0;
+                padding: 0;
+            }
+
+            .container {
+                max-width: 600px;
+                margin: 20px auto;
+                background: #ffffff;
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            .header {
+                background-color: #ff4500;
+                color: white;
+                text-align: center;
+                padding: 20px;
+            }
+
+            .content {
+                padding: 20px;
+                color: #333;
+            }
+
+            .details {
+                background-color: #f9f9f9;
+                padding: 15px;
+                border-radius: 5px;
+                margin: 20px 0;
+            }
+
+            .details p {
+                margin: 8px 0;
+            }
+
+            .footer {
+                text-align: center;
+                background-color: #f4f4f4;
+                color: #777;
+                padding: 10px;
+                font-size: 12px;
+            }
+
+            a {
+                color: #ff4500;
+                text-decoration: none;
+            }
+
+            a:hover {
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1>Booking Confirmation</h1>
+            </div>
+            <div class="content">
+                <p>Dear {{ name }},</p>
+                <p>Thank you for booking a tour with us! We are excited to confirm your booking. Below are the details
+                    of your booking:</p>
+                <div class="details">
+                    <p><strong>Tour:</strong> <a href="{{ tour_url }}" target="_blank">{{ tour }}</a></p>
+                    <p><strong>Date:</strong> {{ date }}</p>
+                    <p><strong>Guests:</strong> {{ guests }}</p>
+                    <p><strong>Special Requests:</strong> {{ special_requests }}</p>
+                    <p><strong>Amount:</strong> {{ currency }} {{ amount }}</p>
+                    <p><strong>Status:</strong> {{ status }}</p>
+                    <p><strong>Payment Status:</strong> {{ payment_status }}</p>
+                    <p><strong>Payment Method:</strong> {{ payment_method }}</p>
+                    <p><strong>Request Jeep:</strong> {{ request_jeep|yesno:"Yes,No" }}</p>
+                </div>
+                <p>You can view your booking details here: <a href="{{ booking_url }}" target="_blank">View Booking</a></p>
+                <p>If you have any questions, feel free to reach out to us.</p>
+                <p>Thanks,<br>The Monica Tours Team</p>
+            </div>
+            <div class="footer">
+                <p>&copy; {{ current_year }} Monica Tours. All rights reserved.</p>
+            </div>
+        </div>
+    </body>
+
+</html>

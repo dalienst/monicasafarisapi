@@ -26,7 +26,7 @@ class UniversalIdModel(models.Model):
 
 
 class ReferenceSlugModel(models.Model):
-    reference = models.CharField(max_length=10, blank=True, null=True, unique=True)
+    reference = models.CharField(max_length=20, blank=True, null=True, unique=True)
     slug = models.SlugField(max_length=255, blank=True, null=True, unique=True)
 
     class Meta:
