@@ -56,6 +56,8 @@ class BookingDetailView(generics.RetrieveUpdateAPIView):
     serializer_class = BookingSerializer
     permission_classes = (IsAuthenticated,)
     lookup_field = "slug"
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ["reference", "date"]
 
     def get_queryset(self):
-        return super().get_queryset().filter(reference=self.kwargs["slug"])
+        return super().get_queryset().filter(slug=self.kwargs["slug"])
